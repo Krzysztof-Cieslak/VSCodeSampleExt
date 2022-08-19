@@ -1,0 +1,21 @@
+name: Codeball
+on:
+  pull_request: {}
+  pull_request_review_comment:
+    types: [created, edited]
+jobs:
+  codeball_job:
+    runs-on: ubuntu-latest
+    name: Codeball
+    steps:
+      - name: Codeball
+        uses: sturdy-dev/codeball-action@v2
+        with:
+          # Settings for "Codeball Suggester"
+          codeSuggestionsFromComments: "true"
+
+          # Settings for "Codeball Approver"
+          approvePullRequests: "false" # Set to "true" to enable!
+          labelPullRequestsWhenApproved: "false" # Set to "true" to enable!
+          labelPullRequestsWhenReviewNeeded: "false"
+          failJobsWhenReviewNeeded: "false"
